@@ -2,7 +2,6 @@
     --text-color: #000000;
     --link-color: #6c71f3;
     --background-color: #ffffff;
-}
 
 * {
     margin: 0;
@@ -320,17 +319,25 @@ nav .right a span {
 .Bio-section {
     padding: 0 20px;
 }
-/* Casestudy */
-/* Casestudy */
-.casestudy-section {
-    padding: 60px 50px;
-    display: flex;
-    justify-content: center;
 }
 
-.casestudy-content {
-    max-width: 780px;
+/* Casestudy */
+.casestudy-section {
+    /* Top/Bottom 60px, Left/Right 20px for mobile, 50px for larger screens */
+    padding: 60px 50px; 
     width: 100%;
+}
+
+/* For screens wider than 768px, use the 50px padding you had before */
+@media (min-width: 768px) {
+    .casestudy-section {
+        padding: 60px 50px;
+    }
+}
+.casestudy-content {
+    max-width: 2000px;
+    width: 100%;
+    margin: 0 auto;      /* Centers the content horizontally */
 }
 
 .casestudy-header {
@@ -392,7 +399,17 @@ nav .right a span {
     margin-top: 50px;
 }
 
-.Diagram {
+.casestudy-Low-Fidelity-Diagram h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 1px;
+    color: var(--link-color);
+    margin-top: 50px;
+}
+
+
+
+.Low-Fidelity-Diagram {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
@@ -400,15 +417,79 @@ nav .right a span {
     gap: 8px;
 }
 
-.diagram-img {
+/* This the acutal image code */
+.Low-Fidelity-Diagram-img {
     width: 100%;
-    max-width: 500px;
+    max-width: 1500px;
     height: auto;
     border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
 }
 
 .Diagram span {
     font-size: 14px;
     color: #888;
+}
+
+.image-container {
+    width: 300px;
+    height: 200px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    /* This scales the image to cover the area while maintaining aspect ratio */
+    object-fit: cover; 
+}
+
+
+
+.casestudy-HighFidelityDiagram h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--link-color);
+    margin-top: 50px;
+}
+
+
+
+.High-Fidelity-Diagram {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+/* This the acutal image code */
+.High-Fidelity-Diagram-img {
+    width: 100%;
+    max-width: 1500px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.High-Fidelity-Diagram span {
+    font-size: 14px;
+    color: #888;
+}
+
+.image-container {
+    width: 300px;
+    height: 200px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    /* This scales the image to cover the area while maintaining aspect ratio */
+    object-fit: cover; 
 }
 }
