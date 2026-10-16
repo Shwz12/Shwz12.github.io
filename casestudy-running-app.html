@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="Styles.css">
+    <title>Case Study | Shogo Aizawa</title>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <nav>
+        <div class="left"><a href="index.html">Shogo Aizawa</a></div>
+        <div class="right">
+            <a href="http://github.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i><span>Github</span></a>
+            <a href="http://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i><span>Linkedin</span></a>
+            <a href="mailto:Shoait18@gmail.com"><i class="fa-solid fa-envelope"></i><span>Email</span></a>
+        </div>
+    </nav>
+
+    <main class="casestudy-layout">
+        <aside class="casestudy-sidebar">
+            <p class="sidebar-label">Contents</p>
+            <nav class="sidebar-nav">
+                <a href="#overview" class="sidebar-link active">Overview</a>
+                <a href="#problem" class="sidebar-link">Problem</a>
+                <a href="#research" class="sidebar-link">Research</a>
+                <a href="#solution" class="sidebar-link">Solution</a>
+                <a href="#high-fidelity" class="sidebar-link">High Fidelity</a>
+                <a href="#discoveries" class="sidebar-link">Discoveries</a>
+            </nav>
+        </aside>
+
+        <section class="casestudy-section">
+            <div class="casestudy-content">
+                <div class="casestudy-header">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <h1>Running Fitness App</h1>
+                    <a href="casesstudies.html" class="back-link">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Back to Case Studies</span>
+                    </a>
+                </div>
+
+                <div id="overview" class="casestudy-block">
+                    <h2>Overview</h2>
+                    <p>Role: Lead — Team of 6</p>
+                    <p>I led a team of 6 through the design of a running fitness app aimed at making the sport approachable for beginners. As lead, I assigned tasks, delegated ownership of individual screens and features, and set weekly deadlines to keep the team on track toward our final prototype across a 10-week product cycle.</p>
+                </div>
+                
+                <div id="problem" class="casestudy-block">
+                    <h2>Problem</h2>
+                    <p>Across the existing running apps we researched, we found a consistent issue: new runners were met with an overwhelming amount of information the moment they opened the app. Metrics, permissions, and settings were presented all at once, with little distinction between what a beginner actually needed to see and what was meant for a more experienced runner. For someone just starting the habit of running, this made the experience feel intimidating rather than motivating. We wanted to design an app where a first-time user could immediately understand what they were being asked to do, and what their post-run data actually meant, without being buried in options.</p>
+                </div>
+                
+                <div id="research" class="casestudy-block">
+                    <h2>Research</h2>
+                    <p>We began by identifying the core goals a new runner wants to set: general running habits, step goals, distance goals, and outdoor activity goals. From there, we explored features to support those goals, including a live elevation bar that updates as the user runs, an activity ring that tracks progress toward their overall goal, a friends-only social layer where users can see each other's progress, and an AI assistant available for questions or advice during a run.</p>
+                    <p>We validated these ideas through usability testing, and the clearest finding was about the interface itself, not the features: too many buttons on the main screen caused confusion. One tester summed it up directly: <em>"There was a lot of tapping to get to the page."</em> In response, we restructured the UI around just five core buttons, with every screen offering a way back to the main page — so a user is never more than one tap from a reset point, no matter how deep into the app they are.</p>
+                </div>
+                
+                <div id="solution" class="casestudy-block">
+                    <h2>Solution</h2>
+                    <p>One problem we kept hearing about was runners wanting to know exactly what their pace or location looked like at a specific point in their run — for example, "what was my pace at mile two?" Our solution was an interactive route map: users can tap directly on a point along their run path (like a mile marker) and see the exact pace, time, and location data for that moment, rather than only getting averages for the whole run.</p>
+                </div>
+                
+                <div id="high-fidelity" class="casestudy-block">
+                    <h2>High Fidelity Prototype</h2>
+                    <p>The final prototype flows from an introduction screen into the main home page, where a user starts a run or walk. After finishing, they land on a post-run summary showing time, distance, steps taken, average heart rate, and calories burned, along with the ability to add their own notes.</p>
+                    <p>As a user logs more runs, the app surfaces comparisons — whether they ran faster than their last two runs, how today's pace compares to their all-time average, and their current streak toward their goal — alongside the activity ring showing overall progress. A social screen lets users see how their friends are progressing toward their own goals and message them directly, and the AI assistant remains available throughout for questions, advice, or troubleshooting.</p>
+                </div>
+                
+                <div id="discoveries" class="casestudy-block">
+                    <h2>Discoveries</h2>
+                    <p>The hardest part of this process was minimizing the number of screens. Every detailed interaction we added tended to spawn a new screen, and the more of those we created, the more time-consuming and heavy the app felt to navigate — the opposite of what we wanted. This mattered more than it might for other apps: because this is a tool meant to be used during a run, we had to be especially disciplined about keeping interaction during the run itself as minimal as possible, saving the more detailed screens for before or after.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cursor-dot"></div>
+    <script src="script.js"></script>
+</body>
+</html>
