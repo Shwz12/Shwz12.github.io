@@ -1,29 +1,47 @@
 :root {
-    --text-color: #000000;
-    --link-color: #6c71f3;
-    --background-color: #ffffff;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
+    --text-color: #f2f2f2;
+    --bg-color: #0d0d0d;
+    --surface-color: #171717;
+    --accent-red: #e6162d;
+    --accent-red-dim: #7a0d18;
+    --link-color: #e6162d;
+    --background-color: #0d0d0d;
+    --heading-font: 'Bebas Neue', sans-serif;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--background-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     max-width: 1700px;
     margin: 0 auto;
+    overflow-x: hidden;
+}
+/* --- Grainy texture overlay for subtle visual noise effect --- */
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-a {
-    color: var(--link-color);
-    text-decoration: none;
+
+h1, h2 {
+    font-family: var(--heading-font);
+    letter-spacing: 1px;
+}
+
+/* Reveal-on-scroll base state — JS adds .is-visible when a section scrolls in */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* ─── Navigation Bar ─────────────────────────────── */
@@ -33,34 +51,67 @@ nav {
     justify-content: space-between;
     padding: 0 50px;
     height: 80px;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--accent-red-dim);
 }
 
 nav .left a {
     color: var(--text-color);
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 26px;
+    font-weight: 400;
+    font-family: var(--heading-font);
+    letter-spacing: 2px;
 }
 
 nav .right a {
+    position: relative;
     color: var(--text-color);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
-    margin-left: 20px;
+    margin-left: 25px;
+    padding-bottom: 4px;
+    overflow: hidden;
+}
+
+/* the "selection slash" — a red bar that sweeps in from the left on hover */
+nav .right a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+}
+
+nav .right a:hover::after {
+    transform: scaleX(1);
+}
+
+nav .right a:hover {
+    color: var(--accent-red);
 }
 
 nav .right a:last-child {
-    color: var(--background-color);
-    background-color: var(--text-color);
-    border-radius: 5px;
-    padding: 10px 20px;
+    color: var(--bg-color);
+    background-color: var(--accent-red);
+    border-radius: 0;
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0% 100%);
+    padding: 10px 22px;
 }
 
-nav .right a span {
-    margin-left: 5px;
+nav .right a:last-child::after { display: none; }
+nav .right a:last-child:hover {
+    color: var(--bg-color);
+    background-color: #fff;
 }
 
 /* ─── Hero Section ───────────────────────────────── */
 .hero-section {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,34 +120,42 @@ nav .right a span {
     gap: 40px;
 }
 
-.hero-section .text {
-    flex: 5;
+/* the big red diagonal slab behind everything — the core P5 visual signature */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 10%;
+    width: 45%;
+    height: 100%;
+    background: var(--accent-red);
+    clip-path: polygon(30% 0, 100% 0, 70% 100%, 0% 100%);
+    opacity: 0.15;
+    z-index: -1;
 }
 
-.hero-section .text h2 {
-    font-size: 45px;
-    font-weight: 600;
-    margin-bottom: 20px;
+.reveal-heading span {
+    display: block;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.hero-section .text .links {
-    margin-top: 25px;
+.reveal-heading span.accent {
+    color: var(--accent-red);
 }
 
-.hero-section .text .links a {
-    display: inline-block;
-    padding: 5px 10px;
-    border: 2px solid var(--link-color);
-    border-radius: 5px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    transition: .2s;
+.reveal-heading.is-visible span {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.hero-section .text .links a:hover {
-    background-color: var(--link-color);
-    color: var(--background-color);
-    border: 2px solid var(--text-color);
+/* stagger the two lines */
+.reveal-heading.is-visible span:nth-child(2) {
+    transition-delay: 0.15s;
 }
 
 .hero-section .headshot {
@@ -112,6 +171,55 @@ nav .right a span {
     height: 300px;
     object-fit: cover;
     object-position: top;
+}
+
+.hero-section .text .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 999px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    margin-right: 12px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+
+.hero-section .text .links a:hover {
+    background: var(--accent-red);
+    color: var(--bg-color);
+    transform: translateY(-2px);
+}
+
+/* ---Japanese text in hero section--- */
+
+.jp-line {
+    color: #999;
+    font-size: 15px;
+    margin-bottom: 14px;
+}
+
+@media (hover: hover) { * { cursor: none; } }
+
+.cursor-dot {
+    position: fixed;
+    top: 0; left: 0;
+    width: 10px; height: 10px;
+    background: var(--accent-red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s, border 0.2s;
+}
+.cursor-dot.hovering {
+    width: 34px;
+    height: 34px;
+    background: rgba(230, 22, 45, 0.25);
+    border: 2px solid var(--accent-red);
 }
 
 /* ─── Skills Section ─────────────────────────────── */
@@ -136,75 +244,36 @@ nav .right a span {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 16px;
 }
-
 .skills-section .cells .cell {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    width: 200px;
-    padding: 10px 20px;
-    border: 1.5px solid #000000;
-    border-radius: 5px;
-    margin: 10px;
+    gap: 8px;
+    width: 90px;
+    padding: 20px 15px;
+    background: var(--surface-color);
+    border: 1px solid #2a2a2a;
+    border-left: 4px solid var(--accent-red);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
+    margin: 0;
+    transition: transform 0.2s, border-color 0.2s;
 }
-
+.skills-section .cells .cell:hover {
+    transform: translateY(-6px);
+    border-left-color: #ffffff;
+}
 .skills-section .cells .cell img {
-    width: 50px;
-    height: 55px;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    margin: 0;
     object-fit: contain;
-    border-radius: 2px;
 }
-
 .skills-section .cells .cell span {
-    font-size: 18px;
-}
-
-/* ─── Bio Section ────────────────────────────────── */
-.Bio-section {
-    padding: 0 50px;
-    margin-bottom: 100px;
-}
-
-.Bio-section h2 {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
-.Bio-section .group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 45px;
-}
-
-.Bio-section .group .person-details {
-    text-align: center;
-    flex: 2;
-}
-
-.Bio-section .group .person-details img {
-    width: 200px;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.Bio-section .group .person-details p {
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.Bio-section .group .person-details p:last-child {
-    font-weight: normal;
-}
-
-.Bio-section .group .text {
-    flex: 7;
+    font-family: var(--heading-font);
+    font-size: 15px;
+    letter-spacing: 0.5px;
 }
 
 /* ─── Case Study Layout ──────────────────────────── */
@@ -237,29 +306,45 @@ nav .right a span {
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 18px;
 }
 
 .sidebar-link {
+    position: relative;
+    display: block;
     font-size: 14px;
     color: #888;
-    padding: 6px 12px;
-    border-left: 2px solid #e5e5e5;
-    transition: all 0.2s;
-    display: block;
+    padding-left: 16px;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-.sidebar-link:hover {
-    color: var(--link-color);
-    border-left-color: var(--link-color);
-    background-color: transparent;
+.sidebar-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 20px;
+    background: #e5e5e5;
+    transition: background 0.2s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    color: var(--accent-red);
+}
+
+.sidebar-link:hover::before,
+.sidebar-link.active::before {
+    background: var(--accent-red);
 }
 
 .sidebar-link.active {
-    color: var(--link-color);
-    border-left-color: var(--link-color);
     font-weight: 600;
 }
+
 
 /* ─── Case Study Content ─────────────────────────── */
 .casestudy-section {
@@ -517,13 +602,6 @@ nav .right a span {
         width: 300px;
     }
 
-    .Bio-section h2 {
-        text-align: center;
-    }
-
-    .Bio-section .group {
-        flex-direction: column;
-    }
 }
 
 @media (max-width: 600px) {
@@ -561,10 +639,6 @@ nav .right a span {
         font-size: 16px;
     }
 
-    .Bio-section {
-        padding: 0 20px;
-    }
-
     .casestudy-layout {
         padding: 0 20px 60px;
     }
@@ -572,4 +646,115 @@ nav .right a span {
     .casestudy-header h1 {
         font-size: 26px;
     }
+}
+
+/* Casestudies */
+
+.cs-grid-page {
+    padding: 60px 50px 100px;
+}
+.cs-grid-page h1 {
+    font-size: 48px;
+    margin-bottom: 40px;
+}
+.cs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+.cs-card {
+    display: block;
+    background: var(--surface-color);
+    border: 1px solid #2a2a2a;
+    padding: 28px;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%);
+    color: var(--text-color);
+    transition: transform 0.2s, border-color 0.2s;
+}
+.cs-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-red);
+}
+.cs-tag {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-red);
+}
+.cs-card h3 {
+    font-family: var(--heading-font);
+    font-size: 24px;
+    margin: 10px 0 10px;
+    font-weight: 400;
+}
+.cs-card p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+
+/* Work in Progress */
+.work-section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+.work-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+}
+.work-heading h2 {
+    font-size: 40px;
+}
+.view-all {
+    font-size: 14px;
+    color: var(--accent-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+}
+.view-all:hover {
+    gap: 10px;
+}
+
+.cta-section {
+    text-align: center;
+    padding: 80px 50px;
+    position: relative;
+}
+.cta-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: var(--accent-red-dim);
+}
+.cta-section h2 {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+.cta-section p {
+    color: #aaa;
+    margin-bottom: 28px;
+}
+.cta-button {
+    display: inline-block;
+    padding: 14px 36px;
+    background: var(--accent-red);
+    color: var(--bg-color);
+    font-family: var(--heading-font);
+    font-size: 18px;
+    letter-spacing: 1px;
+    clip-path: polygon(6% 0, 100% 0, 94% 100%, 0 100%);
+    transition: background 0.2s, transform 0.2s;
+}
+.cta-button:hover {
+    background: #fff;
+    transform: translateY(-3px);
 }
