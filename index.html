@@ -8,7 +8,7 @@
     <!-- Fonts for Text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -18,6 +18,8 @@
     <title>Portfolio</title>
 </head>
 <body>
+    <!-- Grain Effect -->
+    <div class="grain"></div>
 
     <!-- Navigation Bar -->
     <nav>
@@ -55,27 +57,17 @@
         <!-- Section 1: Hero -->
          <section class="hero-section">
             <div class="text">
-              <h2>Hello, My name is Shogo</h2>
-              <p>More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. More text to Come. </p>
-              
-              <div class="links">
-                <a href="#Skills">
-                <i class="fa-solid fa-code"></i>
-                <span>Skills</span>
-                </a>
-
-                <a href="#testimony">
-                <i class="fa-solid fa-pen"></i>
-                <span>testimony</span>
-                </a>
-
-                <a href="casestudy.html">
-                    <i class="fa-solid fa-briefcase"></i>
-                    <span>Case Study</span>
-                </a>
-
+                <h2 class="reveal-heading">
+                  <span>Hello, my name is</span>
+                  <span class="accent">Shogo.</span>
+                </h2>
+                <p class="reveal">I graduated from UC San Diego in 2026, studying Cognitive Science with a specialization in Design and Interaction. I care about building interfaces that feel intuitive and human — work that sits at the intersection of psychology, design, and code. Currently looking for entry-level roles in UX/UI and Product Design, front-end development, and research assistant positions in cognitive science and ML/AI, primarily around the Bay Area.</p>              
+                <div class="links reveal">
+                    <a href="#Skills"><i class="fa-solid fa-code"></i><span>Skills</span></a>
+                    <a href="#work"><i class="fa-solid fa-layer-group"></i><span>Work</span></a>
+                    <a href="casesstudies.html"><i class="fa-solid fa-briefcase"></i><span>Case Study</span></a>
+                </div>
               </div>
-            </div>
             
         <div class="headshot">
               <img src="Images/Headshot (1).jpg" alt="Shogo Aizawa Headshot">
@@ -91,67 +83,47 @@
          </div>
 
          <div class="cells">
-            <div class="cell">
-                <img src="Images/HTML Logo.png" alt="Laws Logo">
-                <span>HTML</span>
-            </div>
-
-        <div class="cells">
-            <div class="cell">
-                <img src="Images/css-logo.png" alt="Animal Crossing">
-                <span>CSS</span>
-            </div>
-
-        <div class="cells">
-            <div class="cell">
-                <img src="Images/Python_logo.jpg" alt="Cute Shrimp">
-                <span>Python</span>
-            </div>
-
-        <div class="cells">
-            <div class="cell">
-                <img src="Images/Figma Logo.png" alt="Cute Fish">
-                <span>Figma</span>
-            </div>
-
-        <div class="cells">
-            <div class="cell">
-                <img src="Images/Java.png" alt="Cute Cat">
-                <span>Java</span>
-            </div>
-
+            <div class="cell"><img src="Images/HTML Logo.png" alt="HTML"><span>HTML</span></div>
+            <div class="cell"><img src="Images/css-logo.png" alt="CSS"><span>CSS</span></div>
+            <div class="cell"><img src="Images/Python_logo.jpg" alt="Python"><span>Python</span></div>
+            <div class="cell"><img src="Images/Figma Logo.png" alt="Figma"><span>Figma</span></div>
+            <div class="cell"><img src="Images/Java.png" alt="Java"><span>Java</span></div>
+        </div>
         
-        
-        
-        
-        
-        
-
-
          </div>
         </section>
 
-
-
-        <!-- Section 3: Bio -->
-        <section id="Bio" class="Bio-section">
-            <h2>Bio</h2>
-            <div class="group">
-                <div class="person-details">
-                    <img src="Images/Me_Headshot.JPG">
-                    <p> Shogo Aizawa</p>
-                    <p> 俺の名は相澤省吾です。よろしくお願いします。</p>
-
-                </div>
-
-                <div class="text">
-              <p>More text to come. More text to come. More text to come. More text to come. More text to come. More text to come. More text to come. More text to come. </p>
-                </div>
+        <section id="work" class="work-section reveal">
+            <div class="work-heading">
+                <h2>Selected Work</h2>
+                <a href="casesstudies.html" class="view-all">View all <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-
+            <div class="cs-grid">
+                <a href="SNS_Timezone_Scheduling.html" class="cs-card">
+                    <span class="cs-tag">UX Research &amp; Design</span>
+                    <h3>Scheduling International Communications Made Easy</h3>
+                    <p>A timezone-aware scheduling system built into messaging apps.</p>
+                </a>
+                <a href="casestudy-running-app.html" class="cs-card">
+                    <span class="cs-tag">UX Design · Figma</span>
+                    <h3>Running Fitness App</h3>
+                    <p>A fitness app concept designed in Figma to help runners track progress and stay motivated.</p>
+                </a>
+            </div>
         </section>
 
+        <section class="cta-section reveal">
+            <h2>Let's build something.</h2>
+            <p>Open to UX/UI, Product Design, Front-End, and research opportunities — reach out anytime.</p>
+            <a href="mailto:Shoait18@gmail.com" class="cta-button">Get in touch</a>
+        </section>
+    
+        <div class="cursor-dot"></div>
+
+        <script src="script.js"></script>
+
     </main>
+
 
 </body>
 </html>
