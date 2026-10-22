@@ -1,11 +1,11 @@
 :root {
     --text-color: #f2f2f2;
-    --bg-color: #0d0d0d;
+    --bg-color: #1e1e1e;
     --surface-color: #171717;
     --accent-red: #e6162d;
     --accent-red-dim: #7a0d18;
     --link-color: #e6162d;
-    --background-color: #0d0d0d;
+    --background-color: #252525;
     --heading-font: 'Bebas Neue', sans-serif;
 }
 
@@ -43,6 +43,7 @@ h1, h2 {
     opacity: 1;
     transform: translateY(0);
 }
+
 
 /* ─── Navigation Bar ─────────────────────────────── */
 nav {
@@ -192,6 +193,16 @@ nav .right a:last-child:hover {
     background: var(--accent-red);
     color: var(--bg-color);
     transform: translateY(-2px);
+}
+
+
+/*--- Resume ---*/
+.resume-btn {
+    padding: 6px 16px !important;
+}
+.resume-btn:hover {
+    background: var(--accent-red);
+    color: var(--bg-color) !important;
 }
 
 /* ---Japanese text in hero section--- */
@@ -412,8 +423,14 @@ nav .right a:last-child:hover {
 .casestudy-block p {
     font-size: 16px;
     line-height: 1.85;
-    color: #444;
+    color: #ffffff;
     margin-bottom: 16px;
+}
+
+.casestudy-block p em {
+    color: var(--accent-red);
+    font-style: normal;
+    font-weight: 600;
 }
 
 .casestudy-block p:last-child {
@@ -693,33 +710,6 @@ nav .right a:last-child:hover {
     line-height: 1.6;
 }
 
-
-/* Work in Progress */
-.work-section {
-    padding: 0 50px;
-    margin-bottom: 100px;
-}
-.work-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 30px;
-}
-.work-heading h2 {
-    font-size: 40px;
-}
-.view-all {
-    font-size: 14px;
-    color: var(--accent-red);
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: gap 0.2s;
-}
-.view-all:hover {
-    gap: 10px;
-}
-
 .cta-section {
     text-align: center;
     padding: 80px 50px;
@@ -757,4 +747,126 @@ nav .right a:last-child:hover {
 .cta-button:hover {
     background: #fff;
     transform: translateY(-3px);
+}
+
+.feature-video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.feature-video-card {
+    background: var(--surface-color);
+    border: 1px solid #2a2a2a;
+    border-top: 3px solid var(--accent-red);
+    padding: 16px;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 96% 100%, 0 100%);
+}
+
+.feature-video-card video {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 14px;
+    background: #000;
+}
+
+.feature-video-card h3 {
+    font-family: var(--heading-font);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.feature-video-card p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+@media (max-width: 850px) {
+    .feature-video-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Work in Progress */
+.work-section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+.work-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+}
+.work-heading h2 {
+    font-size: 40px;
+}
+.view-all {
+    font-size: 14px;
+    color: var(--accent-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+}
+.view-all:hover {
+    gap: 10px;
+}
+
+.overview-video {
+    margin-top: 24px;
+    max-width: 500px;
+}
+.overview-video video {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    background: #000;
+    border-top: 3px solid var(--accent-red);
+    
+}
+.video-caption {
+    font-size: 13px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* Projects */
+.projects-intro {
+    color: #aaa;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+.project-card {
+    background: var(--surface-color);
+    border: 1px solid #2a2a2a;
+    padding: 28px;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%);
+    transition: transform 0.2s, border-color 0.2s;
+}
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-red);
+}
+.project-card h3 {
+    font-family: var(--heading-font);
+    font-size: 22px;
+    margin: 10px 0 10px;
+    font-weight: 400;
+}
+.project-card p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
 }
