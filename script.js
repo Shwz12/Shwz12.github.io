@@ -23,3 +23,12 @@ if (cursor && window.matchMedia('(hover: hover)').matches) {
         el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
     });
 }
+
+const progressBar = document.querySelector('.scroll-progress');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrollTop / docHeight) * 100 + '%';
+    });
+}

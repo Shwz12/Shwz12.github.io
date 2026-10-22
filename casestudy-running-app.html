@@ -11,6 +11,7 @@
 </head>
 <body>
     <div class="grain"></div>
+    <div class="scroll-progress"></div>
 
     <nav>
         <div class="left"><a href="index.html">Shogo Aizawa</a></div>
@@ -49,6 +50,11 @@
                     <h2>Overview</h2>
                     <p>Role: Lead — Team of 6</p>
                     <p>I led a team of 6 through the design of a running fitness app aimed at making the sport approachable for beginners. As lead, I assigned tasks, delegated ownership of individual screens and features, and set weekly deadlines to keep the team on track toward our final prototype across a 10-week product cycle.</p>
+                
+                    <div class="overview-video">
+                        <video src="Videos/Opening Fit_app.mov" autoplay loop muted playsinline></video>
+                        <p class="video-caption">Opening Fit_app — the first interaction, from opening the app to setting goals and landing on the main interface.</p>
+                    </div>
                 </div>
                 
                 <div id="problem" class="casestudy-block">
@@ -59,7 +65,7 @@
                 <div id="research" class="casestudy-block">
                     <h2>Research</h2>
                     <p>We began by identifying the core goals a new runner wants to set: general running habits, step goals, distance goals, and outdoor activity goals. From there, we explored features to support those goals, including a live elevation bar that updates as the user runs, an activity ring that tracks progress toward their overall goal, a friends-only social layer where users can see each other's progress, and an AI assistant available for questions or advice during a run.</p>
-                    <p>We validated these ideas through usability testing, and the clearest finding was about the interface itself, not the features: too many buttons on the main screen caused confusion. One tester summed it up directly: <em>"There was a lot of tapping to get to the page."</em> In response, we restructured the UI around just five core buttons, with every screen offering a way back to the main page — so a user is never more than one tap from a reset point, no matter how deep into the app they are.</p>
+                    <p>We validated these ideas through user testing, and the clearest finding was about the interface itself, not the features: too many buttons on the main screen caused confusion. One tester summed it up directly: <em>"There was a lot of tapping to get to the page."</em> In response, we restructured the UI around just five core buttons, with every screen offering a way back to the main page — so a user is never more than one tap from a reset point, no matter how deep into the app they are.</p>
                 </div>
                 
                 <div id="solution" class="casestudy-block">
@@ -69,8 +75,27 @@
                 
                 <div id="high-fidelity" class="casestudy-block">
                     <h2>High Fidelity Prototype</h2>
-                    <p>The final prototype flows from an introduction screen into the main home page, where a user starts a run or walk. After finishing, they land on a post-run summary showing time, distance, steps taken, average heart rate, and calories burned, along with the ability to add their own notes.</p>
-                    <p>As a user logs more runs, the app surfaces comparisons — whether they ran faster than their last two runs, how today's pace compares to their all-time average, and their current streak toward their goal — alongside the activity ring showing overall progress. A social screen lets users see how their friends are progressing toward their own goals and message them directly, and the AI assistant remains available throughout for questions, advice, or troubleshooting.</p>
+                    <p>The clips below walk through the core interactions of the final prototype — from first opening the app to tracking a run and staying connected with friends.</p>
+                
+                    <div class="feature-video-grid">
+                        <div class="feature-video-card">
+                            <video src="Videos/Visual Map.mov" autoplay loop muted playsinline></video>
+                            <h3>Visual Map</h3>
+                            <p>Live elevation tracking that shows the runner's increase or decrease in elevation throughout their run.</p>
+                        </div>
+                
+                        <div class="feature-video-card">
+                            <video src="Videos/Activity Ring Tracker.mov" autoplay loop muted playsinline></video>
+                            <h3>Activity Ring Tracker</h3>
+                            <p>Watch your progress ring close in as you get closer to reaching your goal.</p>
+                        </div>
+                
+                        <div class="feature-video-card">
+                            <video src="Videos/Friend Messaging.mov" autoplay loop muted playsinline></video>
+                            <h3>Friends Messaging</h3>
+                            <p>Text your friends and see their goal progress and run activity.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="discoveries" class="casestudy-block">
@@ -83,5 +108,6 @@
 
     <div class="cursor-dot"></div>
     <script src="script.js"></script>
+    <div class="page-transition"></div>
 </body>
 </html>
